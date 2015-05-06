@@ -5,7 +5,7 @@ Version = '2.2.2'
 exports.Connector = class Connector
 
   constructor: (@options, @WebSocket, @Timer, @handlers) ->
-    @_uri = "ws#{if @options.https then "s" else ""}://#{@options.host}:#{@options.port}/livereload"
+    @_uri = "ws#{if @options.https then "s" else ""}://#{@options.host ?= 'localhost'}:#{@options.port}/livereload"
 
     @_nextDelay = @options.mindelay
     @_connectionDesired = no

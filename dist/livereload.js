@@ -8,11 +8,12 @@
 
   exports.Connector = Connector = (function() {
     function Connector(options, WebSocket, Timer, handlers) {
+      var _base;
       this.options = options;
       this.WebSocket = WebSocket;
       this.Timer = Timer;
       this.handlers = handlers;
-      this._uri = "ws" + (this.options.https ? "s" : "") + "://" + this.options.host + ":" + this.options.port + "/livereload";
+      this._uri = "ws" + (this.options.https ? "s" : "") + "://" + ((_base = this.options).host != null ? _base.host : _base.host = 'localhost') + ":" + this.options.port + "/livereload";
       this._nextDelay = this.options.mindelay;
       this._connectionDesired = false;
       this.protocol = 0;
